@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Objects;
+
 public class Room {
     public int room_id;
     public String number;
@@ -17,5 +19,23 @@ public class Room {
         this.num_of_double_beds = num_of_double_beds;
         this.is_balcony = is_balcony;
         this.price_for_night = price_for_night;
+    }
+
+    @Override
+    public String toString() {
+        return "Room " + number + " (" + type + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return room_id == room.room_id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(room_id);
     }
 }
